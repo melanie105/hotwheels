@@ -1,0 +1,2084 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: white;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255, 100, 190, 0.22),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(150, 60, 255, 0.18),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(255, 60, 150, 0.15),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0d0317,
+            #21082f 45%,
+            #09020f
+        );
+}
+
+
+/* =========================================
+   ESTRELLAS
+========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.9) 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            circle,
+            rgba(255,190,230,0.7) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        90px 90px,
+        145px 145px;
+
+    background-position:
+        10px 20px,
+        40px 80px;
+
+    opacity: 0.45;
+}
+
+
+/* =========================================
+   CORAZONES FLOTANTES
+========================================= */
+
+#corazones-fondo {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.corazon-flotante {
+    position: absolute;
+
+    bottom: -60px;
+
+    color: rgba(255, 130, 195, 0.75);
+
+    font-size: 20px;
+
+    text-shadow:
+        0 0 5px rgba(255, 100, 180, 0.8),
+        0 0 15px rgba(255, 80, 170, 0.6),
+        0 0 30px rgba(255, 60, 160, 0.3);
+
+    animation:
+        flotarCorazon linear forwards;
+
+    opacity: 0;
+
+}
+
+
+@keyframes flotarCorazon {
+
+    0% {
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg)
+            scale(0.6);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            translateX(30px)
+            rotate(15deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            translateX(-40px)
+            rotate(-20deg)
+            scale(0.7);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================
+   PANTALLA DE INICIO
+========================================= */
+
+.pantalla-inicio {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.luz-inicio {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 80, 180, 0.20),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    animation: luzRespira 5s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+
+@keyframes luzRespira {
+
+    from {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+}
+
+
+.pequeno-inicio {
+    font-size: 18px;
+
+    color: #f7b8dc;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+    animation: aparecerTexto 1.2s ease;
+}
+
+
+.pantalla-inicio h1 {
+
+    position: relative;
+
+    font-size:
+        clamp(42px, 7vw, 78px);
+
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffb5dc,
+            #ffffff,
+            #ffc9e6
+        );
+
+    background-size: 250% auto;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        textoBrillo 5s linear infinite;
+
+    text-shadow:
+        0 0 30px rgba(255, 100, 190, 0.25);
+}
+
+
+.texto-inicio {
+
+    max-width: 620px;
+
+    color: #ead0e0;
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   BOTÓN
+========================================= */
+
+#botonComenzar {
+
+    position: relative;
+
+    z-index: 3;
+
+    border: none;
+
+    padding: 17px 40px;
+
+    border-radius: 50px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: white;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f9a,
+            #b83cff
+        );
+
+    box-shadow:
+        0 0 15px rgba(255, 79, 154, 0.5),
+        0 12px 35px rgba(0, 0, 0, 0.4);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+#botonComenzar:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.05);
+
+    box-shadow:
+        0 0 30px rgba(255, 79, 154, 0.8),
+        0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+#botonComenzar:active {
+
+    transform:
+        translateY(-1px)
+        scale(0.98);
+}
+
+
+/* =========================================
+   PRINCIPAL
+========================================= */
+
+#principal {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    padding:
+        65px
+        20px
+        100px;
+}
+
+
+.encabezado {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+.decoracion-titulo {
+
+    display: block;
+
+    color: #ff9dce;
+
+    font-size: 22px;
+
+    letter-spacing: 12px;
+
+    margin-bottom: 8px;
+
+    opacity: 0.8;
+}
+
+
+.encabezado h1 {
+
+    font-size:
+        clamp(32px, 5vw, 55px);
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 15px rgba(255, 110, 190, 0.6),
+        0 0 35px rgba(255, 110, 190, 0.2);
+}
+
+
+.encabezado p {
+
+    color: #e8c7db;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   JARDÍN
+========================================= */
+
+.jardin {
+
+    width: min(950px, 95vw);
+
+    height: 610px;
+
+    margin: 0 auto;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 40px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(255, 75, 165, 0.18),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(180, 80, 255, 0.10),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(35, 10, 50, 0.35),
+            rgba(8, 2, 16, 0.65)
+        );
+
+    border:
+        1px solid
+        rgba(255, 190, 230, 0.18);
+
+    box-shadow:
+
+        inset 0 0 100px
+        rgba(255, 70, 170, 0.06),
+
+        0 25px 80px
+        rgba(0, 0, 0, 0.5);
+
+}
+
+
+/* Línea de luz inferior */
+
+.jardin::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80%;
+
+    height: 2px;
+
+    left: 10%;
+
+    bottom: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 120, 200, 0.4),
+            transparent
+        );
+
+    filter: blur(1px);
+}
+
+
+.brillo-jardin {
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    left: 50%;
+    bottom: -250px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 80, 170, 0.30),
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   ELEMENTOS
+========================================= */
+
+.elemento {
+
+    position: absolute;
+
+    z-index: 5;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        filter 0.35s ease,
+        opacity 0.35s ease;
+}
+
+
+.elemento img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    filter:
+        drop-shadow(
+            0 12px 12px
+            rgba(0,0,0,0.35)
+        );
+
+    transition:
+        filter 0.35s ease;
+}
+
+
+.elemento:hover img {
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255,170,220,0.9)
+        )
+
+        drop-shadow(
+            0 0 25px
+            rgba(255,80,180,0.55)
+        );
+}
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+.carta {
+
+    width: 155px;
+
+    left: 9%;
+
+    top: 12%;
+
+    animation:
+        aparecerObjeto 1s ease,
+        movimientoCarta 4s ease-in-out infinite;
+}
+
+
+@keyframes movimientoCarta {
+
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+
+}
+
+
+/* =========================================
+   GLOBO
+========================================= */
+
+.globo {
+
+    width: 125px;
+
+    left: 42%;
+
+    top: 5%;
+
+    animation:
+        aparecerObjeto 1.2s ease,
+        movimientoGlobo 5s ease-in-out infinite;
+}
+
+
+@keyframes movimientoGlobo {
+
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(4deg);
+    }
+
+}
+
+
+/* =========================================
+   CORAZÓN
+========================================= */
+
+.corazon {
+
+    width: 135px;
+
+    right: 10%;
+
+    top: 13%;
+
+    animation:
+        aparecerObjeto 1.4s ease,
+        latidoCorazon 1.8s ease-in-out infinite;
+}
+
+
+@keyframes latidoCorazon {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.08);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.06);
+    }
+
+}
+
+
+/* =========================================
+   REGALO
+========================================= */
+
+.regalo {
+
+    width: 150px;
+
+    left: 29%;
+
+    top: 42%;
+
+    animation:
+        aparecerObjeto 1.6s ease,
+        movimientoRegalo 4s ease-in-out infinite;
+}
+
+
+@keyframes movimientoRegalo {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+
+/* =========================================
+   ESTRELLA
+========================================= */
+
+.estrella {
+
+    width: 120px;
+
+    right: 29%;
+
+    top: 42%;
+
+    animation:
+        aparecerObjeto 1.8s ease,
+        brilloEstrella 2.5s ease-in-out infinite;
+}
+
+
+@keyframes brilloEstrella {
+
+    0%, 100% {
+
+        transform: scale(1);
+
+        filter:
+            drop-shadow(
+                0 0 2px
+                rgba(255,255,255,0.3)
+            );
+    }
+
+    50% {
+
+        transform: scale(1.08);
+
+        filter:
+            drop-shadow(
+                0 0 10px
+                rgba(255,235,150,1)
+            )
+
+            drop-shadow(
+                0 0 25px
+                rgba(255,190,80,0.6)
+            );
+    }
+
+}
+
+
+/* =========================================
+   FLORES
+========================================= */
+
+.flor {
+
+    width: 105px;
+
+    top: 72%;
+
+    animation:
+        aparecerObjeto 2s ease,
+        movimientoFlor 4s ease-in-out infinite;
+}
+
+
+@keyframes movimientoFlor {
+
+    0%, 100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+
+}
+
+
+.flor1 {
+    left: 7%;
+}
+
+
+.flor2 {
+    left: 25%;
+
+    animation-delay: 0.4s;
+}
+
+
+.flor3 {
+    left: 43%;
+
+    animation-delay: 0.8s;
+}
+
+
+.flor4 {
+    right: 25%;
+
+    animation-delay: 1.2s;
+}
+
+
+.flor5 {
+    right: 7%;
+
+    animation-delay: 1.6s;
+}
+
+
+/* =========================================
+   OBJETO DESCUBIERTO
+========================================= */
+
+.elemento.descubierto {
+
+    opacity: 0.48;
+
+}
+
+
+.elemento.descubierto img {
+
+    filter:
+        grayscale(0.25)
+        drop-shadow(
+            0 0 7px
+            rgba(255, 180, 220, 0.4)
+        );
+}
+
+
+.elemento.descubierto::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    top: -8px;
+
+    right: -8px;
+
+    width: 27px;
+
+    height: 27px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6eae,
+            #a83cff
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 100, 180, 0.7);
+
+    animation:
+        aparecerCheck 0.4s ease;
+}
+
+
+@keyframes aparecerCheck {
+
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================
+   EFECTO DE CORAZONES AL DESCUBRIR
+========================================= */
+
+.corazon-explosion {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: 200;
+
+    color: #ff72b6;
+
+    font-size: 22px;
+
+    text-shadow:
+        0 0 8px
+        rgba(255,100,180,0.9),
+
+        0 0 20px
+        rgba(255,70,170,0.6);
+
+    animation:
+        explosionCorazon 1s ease-out forwards;
+}
+
+
+@keyframes explosionCorazon {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(0.5);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(1.2)
+            rotate(var(--rotacion));
+    }
+
+}
+
+
+/* =========================================
+   PROGRESO
+========================================= */
+
+.zona-progreso {
+
+    width: min(500px, 90vw);
+
+    margin: 25px auto 0;
+
+    text-align: center;
+}
+
+
+.barra {
+
+    width: 100%;
+
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    margin-bottom: 12px;
+}
+
+
+#barraProgreso {
+
+    height: 100%;
+
+    width: 0%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff5ca8,
+            #c45cff,
+            #ff9fd0
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(255,100,190,0.7);
+
+    transition:
+        width 0.5s ease;
+}
+
+
+#progreso {
+
+    color: #f5cde1;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   BOTÓN VOLVER A EMPEZAR
+========================================= */
+
+#botonReiniciar {
+
+    margin-top: 18px;
+
+    padding:
+        11px
+        25px;
+
+    border:
+        1px solid
+        rgba(255, 160, 210, 0.45);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    color: #f8d7e8;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.25),
+
+        inset 0 0 15px
+        rgba(255, 120, 190, 0.04);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
+}
+
+
+#botonReiniciar:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 100, 180, 0.13);
+
+    border-color:
+        rgba(255, 170, 220, 0.75);
+
+    color: white;
+
+    box-shadow:
+        0 0 15px
+        rgba(255, 100, 190, 0.35),
+
+        0 8px 25px
+        rgba(0, 0, 0, 0.3);
+}
+
+
+#botonReiniciar:active {
+
+    transform:
+        translateY(0)
+        scale(0.97);
+
+}
+
+
+/* =========================================
+   BOTÓN EN CELULAR
+========================================= */
+
+@media (max-width: 700px) {
+
+    #botonReiniciar {
+
+        margin-top: 16px;
+
+        padding:
+            10px
+            21px;
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(4, 1, 10, 0.80);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+.modal-contenido {
+
+    width: min(520px, 92vw);
+
+    position: relative;
+
+    padding:
+        50px
+        35px
+        40px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #ffe7f2
+        );
+
+    color: #57163f;
+
+    box-shadow:
+        0 0 35px
+        rgba(255,100,180,0.6),
+
+        0 30px 80px
+        rgba(0,0,0,0.6);
+
+    animation:
+        aparecerModal 0.4s ease;
+}
+
+
+.corazon-modal {
+
+    font-size: 45px;
+
+    color: #ff4e9b;
+
+    margin-bottom: 15px;
+
+    animation:
+        latidoModal 1.5s ease-in-out infinite;
+}
+
+
+@keyframes latidoModal {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+}
+
+
+#mensajeModal {
+
+    font-size: 25px;
+
+    line-height: 1.6;
+
+    font-weight: 600;
+}
+
+
+#cerrarModal {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 18px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #9d4674;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+#cerrarModal:hover {
+
+    transform:
+        scale(1.2)
+        rotate(10deg);
+}
+
+
+/* =========================================
+   CARTA FINAL
+========================================= */
+
+.final {
+
+    width: min(700px, 92vw);
+
+    margin:
+        70px auto
+        20px;
+
+    position: relative;
+
+    padding: 55px 45px;
+
+    border-radius: 35px;
+
+    text-align: center;
+
+    color: #561936;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,150,210,0.25),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            145deg,
+            #fffdfd,
+            #ffe8f2
+        );
+
+    border:
+        1px solid
+        rgba(255, 150, 205, 0.5);
+
+    box-shadow:
+
+        0 0 35px
+        rgba(255,90,170,0.55),
+
+        0 30px 100px
+        rgba(0,0,0,0.55);
+
+    animation:
+        cartaFinal 1.2s ease;
+}
+
+
+@keyframes cartaFinal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(50px)
+            scale(0.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+.final-contenido {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.final-pequeno {
+
+    color: #a04c78;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 12px;
+}
+
+
+.final h2 {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(32px, 5vw, 48px);
+
+    line-height: 1.2;
+
+    margin-bottom: 20px;
+}
+
+
+.final h2 span {
+
+    display: block;
+
+    color: #e63f8f;
+
+    margin-top: 5px;
+}
+
+
+.separador {
+
+    color: #e85b9f;
+
+    font-size: 20px;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 5px;
+}
+
+
+.final img {
+
+    width: min(400px, 80%);
+
+    max-height: 350px;
+
+    object-fit: contain;
+
+    margin-bottom: 25px;
+
+    filter:
+        drop-shadow(
+            0 12px 20px
+            rgba(90,30,60,0.18)
+        );
+}
+
+
+.mensaje-final {
+
+    max-width: 560px;
+
+    margin: 0 auto;
+
+    text-align: left;
+}
+
+
+.mensaje-final p {
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 17px;
+}
+
+
+.mensaje-final .te-amo {
+
+    text-align: center;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 28px;
+
+    color: #df3d8b;
+
+    margin-top: 25px;
+
+    margin-bottom: 0;
+
+    text-shadow:
+        0 0 10px
+        rgba(230,70,150,0.25);
+}
+
+
+.corazones-final {
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 0;
+
+    width: 100%;
+
+    color: #ee6ba9;
+
+    font-size: 18px;
+
+    opacity: 0.7;
+
+    letter-spacing: 5px;
+}
+
+
+.corazones-final.abajo {
+
+    top: auto;
+
+    bottom: 18px;
+}
+
+
+/* =========================================
+   ANIMACIONES GENERALES
+========================================= */
+
+@keyframes aparecerObjeto {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.4);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes aparecerTexto {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes textoBrillo {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 250% center;
+    }
+
+}
+
+
+@keyframes aparecerModal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.8)
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================
+   OCULTO
+========================================= */
+
+.oculto {
+
+    display: none !important;
+}
+
+
+/* =========================================
+   TABLET
+   701px - 1000px
+========================================= */
+
+@media (min-width: 701px) and (max-width: 1000px) {
+
+    #principal {
+
+        padding-top: 50px;
+
+    }
+
+
+    .jardin {
+
+        width: 92vw;
+
+        height: 560px;
+
+    }
+
+
+    .carta {
+
+        width: 135px;
+
+        left: 8%;
+
+    }
+
+
+    .globo {
+
+        width: 110px;
+
+        left: 43%;
+
+    }
+
+
+    .corazon {
+
+        width: 120px;
+
+        right: 8%;
+
+    }
+
+
+    .regalo {
+
+        width: 135px;
+
+        left: 28%;
+
+    }
+
+
+    .estrella {
+
+        width: 110px;
+
+        right: 28%;
+
+    }
+
+
+    .flor {
+
+        width: 90px;
+
+        top: 73%;
+
+    }
+
+}
+
+
+/* =========================================
+   CELULAR
+   Hasta 700px
+========================================= */
+
+@media (max-width: 700px) {
+
+    body {
+
+        min-height: 100svh;
+
+    }
+
+
+    .pantalla-inicio {
+
+        min-height: 100svh;
+
+        padding:
+            25px
+            18px;
+
+    }
+
+
+    .luz-inicio {
+
+        width: 330px;
+
+        height: 330px;
+
+    }
+
+
+    .pequeno-inicio {
+
+        font-size: 15px;
+
+        letter-spacing: 1.5px;
+
+    }
+
+
+    .pantalla-inicio h1 {
+
+        font-size:
+            clamp(38px, 12vw, 58px);
+
+    }
+
+
+    .texto-inicio {
+
+        font-size: 16px;
+
+        line-height: 1.65;
+
+    }
+
+
+    #botonComenzar {
+
+        padding:
+            15px
+            30px;
+
+        font-size: 16px;
+
+    }
+
+
+    #principal {
+
+        padding:
+            35px
+            10px
+            70px;
+
+    }
+
+
+    .decoracion-titulo {
+
+        font-size: 18px;
+
+        letter-spacing: 7px;
+
+    }
+
+
+    .encabezado h1 {
+
+        font-size:
+            clamp(30px, 9vw, 42px);
+
+    }
+
+
+    .encabezado p {
+
+        font-size: 15px;
+
+    }
+
+
+    /* Jardín vertical */
+
+    .jardin {
+
+        width: 94vw;
+
+        height: 670px;
+
+        border-radius: 28px;
+
+    }
+
+
+    /* Carta */
+
+    .carta {
+
+        width: 105px;
+
+        left: 8%;
+
+        top: 9%;
+
+    }
+
+
+    /* Globo */
+
+    .globo {
+
+        width: 90px;
+
+        left: 50%;
+
+        top: 5%;
+
+        margin-left: -45px;
+
+    }
+
+
+    /* Corazón */
+
+    .corazon {
+
+        width: 100px;
+
+        right: 8%;
+
+        top: 10%;
+
+    }
+
+
+    /* Regalo */
+
+    .regalo {
+
+        width: 115px;
+
+        left: 50%;
+
+        top: 37%;
+
+        margin-left: -57px;
+
+    }
+
+
+    /* Estrella */
+
+    .estrella {
+
+        width: 90px;
+
+        right: 12%;
+
+        top: 40%;
+
+    }
+
+
+    /* Flores */
+
+    .flor {
+
+        width: 70px;
+
+        top: auto;
+
+        bottom: 30px;
+
+    }
+
+
+    .flor1 {
+
+        left: 3%;
+
+    }
+
+
+    .flor2 {
+
+        left: 22%;
+
+    }
+
+
+    .flor3 {
+
+        left: 50%;
+
+        margin-left: -35px;
+
+    }
+
+
+    .flor4 {
+
+        right: 22%;
+
+    }
+
+
+    .flor5 {
+
+        right: 3%;
+
+    }
+
+
+    .zona-progreso {
+
+        width: 88vw;
+
+    }
+
+
+    #progreso {
+
+        font-size: 14px;
+
+    }
+
+
+    /* Modal */
+
+    .modal {
+
+        padding: 15px;
+
+    }
+
+
+    .modal-contenido {
+
+        padding:
+            45px
+            22px
+            35px;
+
+        border-radius: 25px;
+
+    }
+
+
+    .corazon-modal {
+
+        font-size: 38px;
+
+    }
+
+
+    #mensajeModal {
+
+        font-size: 20px;
+
+        line-height: 1.5;
+
+    }
+
+
+    /* Carta final */
+
+    .final {
+
+        width: 94vw;
+
+        margin-top: 50px;
+
+        padding:
+            45px
+            22px;
+
+        border-radius: 28px;
+
+    }
+
+
+    .final h2 {
+
+        font-size: 31px;
+
+    }
+
+
+    .final img {
+
+        width: 85%;
+
+    }
+
+
+    .mensaje-final p {
+
+        font-size: 16px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .mensaje-final .te-amo {
+
+        font-size: 25px;
+
+    }
+
+
+    .corazones-final {
+
+        font-size: 15px;
+
+        letter-spacing: 2px;
+
+    }
+
+}
+
+
+/* =========================================
+   CELULARES MUY PEQUEÑOS
+========================================= */
+
+@media (max-width: 380px) {
+
+    .jardin {
+
+        height: 620px;
+
+    }
+
+
+    .carta {
+
+        width: 90px;
+
+    }
+
+
+    .globo {
+
+        width: 78px;
+
+        margin-left: -39px;
+
+    }
+
+
+    .corazon {
+
+        width: 85px;
+
+    }
+
+
+    .regalo {
+
+        width: 100px;
+
+        margin-left: -50px;
+
+    }
+
+
+    .estrella {
+
+        width: 78px;
+
+    }
+
+
+    .flor {
+
+        width: 58px;
+
+    }
+
+
+    .flor3 {
+
+        margin-left: -29px;
+
+    }
+
+
+    .final {
+
+        padding:
+            40px
+            18px;
+
+    }
+
+}
